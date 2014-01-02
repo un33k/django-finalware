@@ -101,7 +101,7 @@ Advanced users:
    ```
 
    ```python
-    # If any of the following is set in your settings file, the get automatically
+    # If any of the following is set in your settings file, they get automatically
     # injected into the response context
 
     # Site's CDN Static URL (e.g. Amazon S3 bucket configured for downloading)

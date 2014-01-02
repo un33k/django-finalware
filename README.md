@@ -101,7 +101,8 @@ Advanced users:
    ```
 
    ```python
-    # If any of the following is set in your settings file, they automatically get inject into the context
+    # If any of the following is set in your settings file, the get automatically
+    # injected into the response context
 
     # Site's CDN Static URL (e.g. Amazon S3 bucket configured for downloading)
     SITE_CDN_STATIC_URL = ''

@@ -1,0 +1,12 @@
+*.pyc
+*.pyo
+*.db
+*.swp
+*.log
+.DS_Store
+*~
+build
+src
+.svn
+*_db
+temp_data

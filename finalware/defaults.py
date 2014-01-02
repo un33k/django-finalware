@@ -30,3 +30,6 @@ SITE_GOOGLE_ANALYTICS = getattr(settings, 'SITE_GOOGLE_ANALYTICS', '')
 
 # Auto-load template tags in this list
 SITE_TEMPLATE_TAGS_AUTO_LOAD_LIST = getattr(settings, 'SITE_TEMPLATE_TAGS_AUTO_LOAD_LIST', {})
+
+# To see session objects in admin
+SITE_ENABLE_SESSION_IN_ADMIN = getattr(settings, 'SITE_ENABLE_SESSION_IN_ADMIN', False)

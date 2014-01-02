@@ -68,3 +68,5 @@ SITE_ID = 1
 
 ROOT_URLCONF = 'finalware.tests.urls'
 STATIC_URL = '/s/'
+
+SITE_ENABLE_SESSION_IN_ADMIN = True

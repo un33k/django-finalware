@@ -30,8 +30,9 @@ How to install
 How to use
 ====================
 
-   # Add `finalware` to the very end of your INSTALLED_APPS
    ```python
+    # Add `finalware` to the very end of your INSTALLED_APPS
+
     INSTALLED_APPS = [
         'django.contrib.auth',
         'django.contrib.contenttypes',
@@ -46,8 +47,9 @@ How to use
     ]
    ```
 
-   # Add `finalware` to the very end of your TEMPLATE_CONTEXT_PROCESSORS
    ```python
+    # Add `finalware` to the very end of your TEMPLATE_CONTEXT_PROCESSORS
+
     TEMPLATE_CONTEXT_PROCESSORS = [
         'django.contrib.auth.context_processors.auth',
         'django.core.context_processors.debug',
@@ -57,8 +59,9 @@ How to use
     ]
    ```
 
-   # Setup your SITE_OBJECTS_INFO_DICT
    ```python
+    # Setup your SITE_OBJECTS_INFO_DICT
+
     SITE_OBJECTS_INFO_DICT = {
         '1': {
             'name': 'production',

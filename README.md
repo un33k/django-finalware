@@ -60,7 +60,7 @@ How to use
    ```
 
    ```python
-    # Setup your SITE_OBJECTS_INFO_DICT
+    # Add SITE_OBJECTS_INFO_DICT to your settings file. Something like the following.
 
     SITE_OBJECTS_INFO_DICT = {
         '1': {

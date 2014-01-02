@@ -27,20 +27,3 @@ def load_template_tags():
     """
     for t in defaults.SITE_TEMPLATE_TAGS_AUTO_LOAD_LIST:
         template.add_to_builtins(t)
-
-def finalize(sender, **kwargs):
-    """
-    After syncdb/migrate, make final adjustments in order to prepare
-    and secure the site. At the end of the function, the site is up and
-    ready to accept requests.
-    """
-    # only trigger if we have installed the last app
-    if kwargs['app'].__name__ == '{}.models'.format(settings.INSTALLED_APPS[-1]):
-
-        # setup sites
-        load_site_objects()
-
-        # load commonly used template tags, once upon start
-        load_template_tags()
-
-        # do other site-wide related stuff here

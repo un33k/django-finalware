@@ -127,7 +127,7 @@ Advanced users:
 Running the tests
 ====================
 
-To run the tests against the current environment:
+Here how your run the test:
 
     python manage.py test
 

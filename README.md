@@ -48,7 +48,7 @@ How to use
    ```
 
    ```python
-    # Add `finalware` to the very end of your TEMPLATE_CONTEXT_PROCESSORS
+    # Add `finalware context processor` to the very end of your TEMPLATE_CONTEXT_PROCESSORS
 
     TEMPLATE_CONTEXT_PROCESSORS = [
         'django.contrib.auth.context_processors.auth',

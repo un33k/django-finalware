@@ -80,8 +80,9 @@ How to use
 Advanced users:
 ====================
 
-   # To automatically load the common template tags, add the following to your settings file
    ```python
+    # To automatically load the common template tags, add the following to your settings file
+
     AUTO_LOAD_TEMPLATE_TAGS_LIST = [
         # django specific tags
         'django.templatetags.cache',
@@ -96,8 +97,9 @@ Advanced users:
 
    ```
 
-   # If any of the following is set in your settings file, they automatically get inject into the context
    ```python
+    # If any of the following is set in your settings file, they automatically get inject into the context
+
     # Site's CDN Static URL (e.g. Amazon S3 bucket configured for downloading)
     SITE_CDN_STATIC_URL = ''
 

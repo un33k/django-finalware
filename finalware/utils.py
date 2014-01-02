@@ -28,7 +28,7 @@ def load_template_tags():
     for t in defaults.SITE_TEMPLATE_TAGS_AUTO_LOAD_LIST:
         template.add_to_builtins(t)
 
-def finalize_site(sender, **kwargs):
+def finalize(sender, **kwargs):
     """
     After syncdb/migrate, make final adjustments in order to prepare
     and secure the site. At the end of the function, the site is up and

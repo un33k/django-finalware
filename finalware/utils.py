@@ -18,7 +18,7 @@ def load_site_objects():
     """
     site_info = getattr(defaults, 'SITE_OBJECTS_INFO_DICT')
     if site_info:
-        for pk in sorted(site_info.iterkeys()):
+        for pk in sorted(site_info.keys()):
             site, created = Site.objects.get_or_create(pk=pk)
             if site:
                 site.name = site_info[pk]['name']

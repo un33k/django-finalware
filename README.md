@@ -45,6 +45,7 @@ How to use
         # last application to finalize things
         'finalware',
     ]
+
    ```
 
    ```python
@@ -57,6 +58,7 @@ How to use
 
         'finalware.context_processors.contextify',
     ]
+
    ```
 
    ```python
@@ -77,6 +79,7 @@ How to use
         },
     }
     SITE_ID = 1
+
    ```
 
    ```python
@@ -94,6 +97,7 @@ How to use
 
     # A hashed version of this field will be store in the `password` field.
     SITE_SUPERUSER_PASSWORD = ''
+
    ```
 
    ```python
@@ -134,6 +138,7 @@ How to use
     SITE_KEYWORDS = ''
     SITE_DESCRIPTION = ''
     SITE_GOOGLE_ANALYTICS = ''
+
    ```
 
 Running the tests

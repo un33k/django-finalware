@@ -10,8 +10,12 @@ Django Finalware
 Overview
 ====================
 
-This utility application automatically setup the `Site` objects and injects any site related
-data into the response context. It also auto loads the most used template tags upfront.
+This utility application can automatically:
+
+  1. Setup the `Site` objects
+  2. Inject any site related data into the response `context`
+  3. Load the most used `template tags` on startup
+  4. Create or update a `superuser` account
 
 How to install
 ====================

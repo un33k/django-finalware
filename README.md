@@ -83,10 +83,17 @@ How to use
     # To create and/or update a superuser account automatically add the following to your settings file
     # This will disable the `superuser` creation option in syncdb.
 
-    SITE_SUPERUSER_ID = '' # this is the superuser object ID. Pick something other than `1` for security reason.
-    SITE_SUPERUSER_USERNAME = '' # this is stored in User.USERNAME_FIELD. This is usually an `username` or `email`.
-    SITE_SUPERUSER_EMAIL = '' # this is stored in the `email` field if User.USERNAME_FIELD is not `email`.
-    SITE_SUPERUSER_PASSWORD = '' # hashed version of this will be store in the `password` field.
+    # This field is the superuser object ID. Pick something other than `1` for security reason.
+    SITE_SUPERUSER_ID = ''
+
+    # This field is stored in User.USERNAME_FIELD. This is usually a `username` or `email`.
+    SITE_SUPERUSER_USERNAME = ''
+
+    # This field is stored in the `email` field if User.USERNAME_FIELD is not `email`.
+    SITE_SUPERUSER_EMAIL = ''
+
+    # A hashed version of this field will be store in the `password` field.
+    SITE_SUPERUSER_PASSWORD = ''
    ```
 
    ```python

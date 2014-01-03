@@ -64,8 +64,9 @@ class SuperuserTestCase(TestCase):
         self.user = User.objects.get(pk=settings.SITE_SUPERUSER_ID)
 
     def test_superuser_username(self):
-        if hasattr(self.user, 'username'):
-            self.assertEquals(self.user.username, settings.SITE_SUPERUSER_USERNAME)
+        username_field = self.user.USERNAME_FIELD
+        if hasattr(self.user, username_field):
+            self.assertEquals(getattr(self.user, username_field), settings.SITE_SUPERUSER_USERNAME)
 
     def test_superuser_email(self):
         if hasattr(self.user, 'email'):

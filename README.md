@@ -93,10 +93,11 @@ How to use
     # This field is the superuser object ID. Pick something other than `1` for security reason.
     SITE_SUPERUSER_ID = ''
 
-    # This field is stored in User.USERNAME_FIELD. This is usually a `username` or `email`.
+    # This field is stored in User.USERNAME_FIELD. This is usually a `username` or  an `email`.
     SITE_SUPERUSER_USERNAME = ''
 
     # This field is stored in the `email` field if User.USERNAME_FIELD is not an `email`.
+    # If User.USERNAME_FIELD is already an email address, set SITE_SUPERUSER_EMAIL = SITE_SUPERUSER_USERNAME
     SITE_SUPERUSER_EMAIL = ''
 
     # A hashed version of this field will be store in the `password` field.

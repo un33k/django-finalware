@@ -46,8 +46,9 @@ def create_superuser():
         user, created = User.objects.get_or_create(pk=user_id)
         if user:
             user.set_password(password)
-            user.username = username
-            user.email = email
+            setattr(user, user.USERNAME_FIELD, username)
+            if hasattr(user, 'email'):
+                user.email = email
             user.is_staff = True
             user.is_active = True
             user.is_superuser = True

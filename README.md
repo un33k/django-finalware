@@ -168,7 +168,7 @@ Released under a ([BSD](LICENSE.md)) license.
 
 
 [build-status-image-travis]: https://secure.travis-ci.org/un33k/django-finalware.png?branch=master
-[travis]: http://travis-ci.org/tomchristie/django-finalware?branch=master
+[travis]: http://travis-ci.org/un33k/django-finalware?branch=master
 
 [build-status-image-fury]: https://badge.fury.io/py/django-finalware.png
 [fury]: http://badge.fury.io/py/django-finalware

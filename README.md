@@ -80,7 +80,7 @@ How to use
    ```
 
    ```python
-    # To create and/or update a superuser account automatically add the following to your settings file
+    # To create/update a superuser account automatically add the following to your settings file.
     # This will disable the `superuser` creation option in syncdb.
 
     # This field is the superuser object ID. Pick something other than `1` for security reason.
@@ -97,7 +97,7 @@ How to use
    ```
 
    ```python
-    # To automatically load the common template tags, add the following to your settings file
+    # To automatically load the common template tags, add the following to your settings file.
 
     AUTO_LOAD_TEMPLATE_TAGS_LIST = [
         # django specific tags

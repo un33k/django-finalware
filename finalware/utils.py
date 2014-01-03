@@ -1,8 +1,12 @@
+import logging
+from django import template
 from django.conf import settings
 from django.contrib.sites.models import Site
-from django import template
+from django.utils.translation import ugettext as _
 
 from . import defaults
+
+log = logging.getLogger("{}.{}".format('__module__', '__name__'))
 
 
 
@@ -27,3 +31,25 @@ def load_template_tags():
     """
     for t in defaults.SITE_TEMPLATE_TAGS_AUTO_LOAD_LIST:
         template.add_to_builtins(t)
+
+def create_superuser():
+    """
+    Create or update a superuser.
+    """
+    user_id = getattr(settings, 'SITE_SUPERUSER_ID')
+    username = getattr(settings, 'SITE_SUPERUSER_USERNAME')
+    email = getattr(settings, 'SITE_SUPERUSER_EMAIL')
+    password = getattr(settings, 'SITE_SUPERUSER_PASSWORD')
+    if user_id and username and email and password:
+        from django.contrib.auth import get_user_model
+        User = get_user_model()
+        user, created = User.objects.get_or_create(pk=user_id)
+        if user:
+            user.set_password(password)
+            user.username = username
+            user.email = email
+            user.is_staff = True
+            user.is_active = True
+            user.is_superuser = True
+            user.save()
+            log.info(_('Superuser created/updated'))

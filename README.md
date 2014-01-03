@@ -79,9 +79,15 @@ How to use
     SITE_ID = 1
    ```
 
+   ```python
+    # To create and/or update a superuser account automatically add the following to your settings file
+    # This will disable the `superuser` creation option in syncdb.
 
-Advanced users:
-====================
+    SITE_SUPERUSER_ID = '' # this is the superuser object ID. Pick something other than `1` for security reason.
+    SITE_SUPERUSER_USERNAME = '' # this is stored in User.USERNAME_FIELD. This is usually an `username` or `email`.
+    SITE_SUPERUSER_EMAIL = '' # this is stored in the `email` field if User.USERNAME_FIELD is not `email`.
+    SITE_SUPERUSER_PASSWORD = '' # hashed version of this will be store in the `password` field.
+   ```
 
    ```python
     # To automatically load the common template tags, add the following to your settings file
@@ -101,8 +107,7 @@ Advanced users:
    ```
 
    ```python
-    # If any of the following is set in your settings file, they get automatically
-    # injected into the response context
+    # To automatically add any of the following to your response context, set them in your settings file.
 
     # Site's CDN Static URL (e.g. Amazon S3 bucket configured for downloading)
     SITE_CDN_STATIC_URL = ''

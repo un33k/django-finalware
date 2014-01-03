@@ -148,7 +148,7 @@ How to use
 Running the tests
 ====================
 
-Here how your run the test:
+To run the unit test:
 
     python manage.py test
 

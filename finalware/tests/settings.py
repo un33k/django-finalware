@@ -70,3 +70,8 @@ ROOT_URLCONF = 'finalware.tests.urls'
 STATIC_URL = '/s/'
 
 SITE_ENABLE_SESSION_IN_ADMIN = True
+
+SITE_SUPERUSER_ID = '22'
+SITE_SUPERUSER_USERNAME = 'admin'
+SITE_SUPERUSER_EMAIL = 'admin@example.com'
+SITE_SUPERUSER_PASSWORD = 'coolpass'

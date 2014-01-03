@@ -1,14 +1,17 @@
 from django.test import TestCase
+from django.conf import settings
 from django.contrib.sites.models import Site
+from django.contrib.auth import get_user_model
 
 from finalware import defaults
 
-class SiteObjectTestCase(TestCase):
+
+class SiteTestCase(TestCase):
     """
     Site objects are created
     """
     def setUp(self):
-        pass
+        self.resp = self.client.get('/admin')
 
     def test_current_site_object(self):
         curr = Site.objects.get_current()
@@ -17,14 +20,6 @@ class SiteObjectTestCase(TestCase):
     def test_total_site_objects(self):
         sites = Site.objects.count()
         self.assertEquals(sites, len(defaults.SITE_OBJECTS_INFO_DICT))
-
-
-class SiteUpTestCase(TestCase):
-    """
-    Django is up and running
-    """
-    def setUp(self):
-        self.resp = self.client.get('/admin')
 
     def test_admin_page(self):
         self.assertEqual(self.resp.status_code, 200)
@@ -58,3 +53,23 @@ class ContextTestCase(TestCase):
 
     def test_context_description(self):
         self.assertEqual(self.resp.context['SITE_DESCRIPTION'], defaults.SITE_DESCRIPTION)
+
+
+class SuperuserTestCase(TestCase):
+    """
+    Site objects are created
+    """
+    def setUp(self):
+        User = get_user_model()
+        self.user = User.objects.get(pk=settings.SITE_SUPERUSER_ID)
+
+    def test_superuser_username(self):
+        if hasattr(self.user, 'username'):
+            self.assertEquals(self.user.username, settings.SITE_SUPERUSER_USERNAME)
+
+    def test_superuser_email(self):
+        if hasattr(self.user, 'email'):
+            self.assertEquals(self.user.email, settings.SITE_SUPERUSER_EMAIL)
+
+    def test_superuser_password(self):
+        self.assertEquals(self.user.check_password(settings.SITE_SUPERUSER_PASSWORD), True)

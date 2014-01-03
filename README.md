@@ -167,4 +167,3 @@ Released under ([BSD](LICENSE.md)).
 
 [build-status-image-pypi]: https://pypip.in/d/django-finalware/badge.png
 [pypi]: https://crate.io/packages/django-finalware?version=latest
-

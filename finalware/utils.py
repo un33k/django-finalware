@@ -6,7 +6,7 @@ from django.utils.translation import ugettext as _
 
 from . import defaults
 
-log = logging.getLogger("{}.{}".format('__module__', '__name__'))
+log = logging.getLogger(__name__)
 
 
 

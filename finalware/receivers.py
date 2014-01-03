@@ -7,7 +7,8 @@ from .utils import load_site_objects
 from .utils import load_template_tags
 from .utils import create_superuser
 
-log = logging.getLogger("{}.{}".format('__module__', '__name__'))
+log = logging.getLogger(__name__)
+
 
 
 def disable_superuser_request():

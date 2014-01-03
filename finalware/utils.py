@@ -36,10 +36,10 @@ def create_superuser():
     """
     Create or update a superuser.
     """
-    user_id = getattr(settings, 'SITE_SUPERUSER_ID')
-    username = getattr(settings, 'SITE_SUPERUSER_USERNAME')
-    email = getattr(settings, 'SITE_SUPERUSER_EMAIL')
-    password = getattr(settings, 'SITE_SUPERUSER_PASSWORD')
+    user_id = getattr(settings, 'SITE_SUPERUSER_ID', '')
+    username = getattr(settings, 'SITE_SUPERUSER_USERNAME', '')
+    email = getattr(settings, 'SITE_SUPERUSER_EMAIL', '')
+    password = getattr(settings, 'SITE_SUPERUSER_PASSWORD', '')
     if user_id and username and email and password:
         from django.contrib.auth import get_user_model
         User = get_user_model()

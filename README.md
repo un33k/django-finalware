@@ -15,7 +15,7 @@ This utility application can automatically:
   1. Setup the `Site` objects
   2. Inject any site related data into the response `context`
   3. Load the most used `template tags` on startup
-  4. Create or update a `superuser` account
+  4. Create and/or update a `superuser` account
 
 How to install
 ====================

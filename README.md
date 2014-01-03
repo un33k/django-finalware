@@ -1,7 +1,7 @@
 Django Finalware
 ====================
 
-**A utility application that finalizes the bootstrapping of a Django-powered site**
+**A utility application that automates the bootstrapping of a Django-powered site**
 
 [![build-status-image-fury]][fury]
 [![build-status-image-pypi]][pypi]
@@ -12,9 +12,9 @@ Overview
 
 This utility application can automatically:
 
-  1. Setup the `Site` objects
-  2. Inject any site related data into the response `context`
-  3. Load the most used `template tags` on startup
+  1. Setup the `Site` objects for (development, integration & production)
+  2. Inject common site related data into the response `context`
+  3. Load the most-used `template tags` on startup
   4. Create and/or update a `superuser` account
 
 How to install
@@ -35,6 +35,7 @@ How to use
 ====================
 
    ```python
+
     # Add `finalware` to the very end of your INSTALLED_APPS
 
     INSTALLED_APPS = [
@@ -53,7 +54,8 @@ How to use
    ```
 
    ```python
-    # Add `finalware context processor` to the very end of your TEMPLATE_CONTEXT_PROCESSORS
+
+    # Add `finalware.context_processors.contextify` to your TEMPLATE_CONTEXT_PROCESSORS
 
     TEMPLATE_CONTEXT_PROCESSORS = [
         'django.contrib.auth.context_processors.auth',
@@ -66,7 +68,8 @@ How to use
    ```
 
    ```python
-    # Add SITE_OBJECTS_INFO_DICT to your settings file. Something like the following.
+
+    # Add `SITE_OBJECTS_INFO_DICT` to your settings file. For example:
 
     SITE_OBJECTS_INFO_DICT = {
         '1': {
@@ -87,26 +90,28 @@ How to use
    ```
 
    ```python
-    # To create/update a superuser account automatically add the following to your settings file.
-    # This will disable the `superuser` creation option in syncdb.
+
+    # To create/update a superuser account automatically, add the following to your settings file.
+    # This will disable the `superuser` creation option of syncdb.
 
     # This field is the superuser object ID. Pick something other than `1` for security reason.
     SITE_SUPERUSER_ID = ''
 
-    # This field is stored in User.USERNAME_FIELD. This is usually a `username` or  an `email`.
+    # This field is stored in `User.USERNAME_FIELD`. This is usually a `username` or  an `email`.
     SITE_SUPERUSER_USERNAME = ''
 
-    # This field is stored in the `email` field if User.USERNAME_FIELD is not an `email`.
-    # If User.USERNAME_FIELD is already an email address, set SITE_SUPERUSER_EMAIL = SITE_SUPERUSER_USERNAME
+    # This field is stored in the `email` field, provided, that `User.USERNAME_FIELD` is not an `email`.
+    # If `User.USERNAME_FIELD` is already an email address, set `SITE_SUPERUSER_EMAIL = SITE_SUPERUSER_USERNAME`
     SITE_SUPERUSER_EMAIL = ''
 
-    # A hashed version of this field will be store in the `password` field.
+    # A hashed version of `SITE_SUPERUSER_PASSWORD` will be store in superuser's `password` field.
     SITE_SUPERUSER_PASSWORD = ''
 
    ```
 
    ```python
-    # To automatically load the common template tags, add the following to your settings file.
+
+    # To automatically load the most-used template tags, add them to `AUTO_LOAD_TEMPLATE_TAGS_LIST` in your settings.
 
     AUTO_LOAD_TEMPLATE_TAGS_LIST = [
         # django specific tags
@@ -123,6 +128,7 @@ How to use
    ```
 
    ```python
+
     # To automatically add any of the following to your response context, set them in your settings file.
 
     # Site's CDN Static URL (e.g. Amazon S3 bucket configured for downloading)
@@ -157,7 +163,7 @@ To run the unit test:
 License
 ====================
 
-Released under ([BSD](LICENSE.md)).
+Released under a ([BSD](LICENSE.md)) license.
 
 
 [build-status-image-travis]: https://secure.travis-ci.org/un33k/django-finalware.png?branch=master

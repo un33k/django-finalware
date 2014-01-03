@@ -7,10 +7,10 @@ import os
 import sys
 
 
-name = 'django-ipware'
-package = 'ipware'
-description = "A Django utility application that returns client's real IP address"
-url = 'https://github.com/un33k/django-ipware'
+name = 'django-finalware'
+package = 'finalware'
+description = "A utility application that finalizes the bootstrapping of a Django-powered site"
+url = 'https://github.com/un33k/django-finalware'
 author = 'Val Neekman'
 author_email = 'info@neekware.com'
 license = 'BSD'

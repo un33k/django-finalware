@@ -3,6 +3,7 @@ Django Finalware
 
 **A utility application that automates the bootstrapping of a Django-powered site**
 
+[![build-status-image-travis]][travis]
 [![build-status-image-fury]][fury]
 [![build-status-image-pypi]][pypi]
 

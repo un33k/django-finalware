@@ -92,7 +92,7 @@ How to use
     # This field is stored in User.USERNAME_FIELD. This is usually a `username` or `email`.
     SITE_SUPERUSER_USERNAME = ''
 
-    # This field is stored in the `email` field if User.USERNAME_FIELD is not `email`.
+    # This field is stored in the `email` field if User.USERNAME_FIELD is not and `email`.
     SITE_SUPERUSER_EMAIL = ''
 
     # A hashed version of this field will be store in the `password` field.

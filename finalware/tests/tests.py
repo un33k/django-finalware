@@ -25,6 +25,7 @@ class SiteTestCase(TestCase):
         sites = Site.objects.count()
         self.assertEquals(sites, len(defaults.SITE_OBJECTS_INFO_DICT))
 
+
 class ContextTestCase(TestCase):
     """
     Context is filled in

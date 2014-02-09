@@ -9,7 +9,6 @@ from . import defaults
 log = logging.getLogger(__name__)
 
 
-
 # Setup the available sites for this project
 def load_site_objects():
     """
@@ -54,3 +53,12 @@ def create_superuser():
             user.is_superuser = True
             user.save()
             log.info(_('Superuser created/updated'))
+
+def is_last_installed_app(app_config):
+    """
+    Returns True if this app is the last installed application
+    Returns False if this app is not installed or not the last application
+    """
+    if app_config.label == settings.INSTALLED_APPS[-1].split('.')[-1]:
+        return True
+    return False

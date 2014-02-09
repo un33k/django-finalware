@@ -2,6 +2,8 @@ from django.test import TestCase
 from django.conf import settings
 from django.contrib.sites.models import Site
 from django.contrib.auth import get_user_model
+from django.test.utils import setup_test_environment
+
 
 from finalware import defaults
 
@@ -11,6 +13,7 @@ class SiteTestCase(TestCase):
     Site objects are created
     """
     def setUp(self):
+        setup_test_environment()
         self.resp = self.client.get('/admin')
 
     def test_current_site_object(self):
@@ -30,6 +33,7 @@ class ContextTestCase(TestCase):
     Context is filled in
     """
     def setUp(self):
+        setup_test_environment()
         self.resp = self.client.get('/admin')
 
     def test_context_site(self):
@@ -60,6 +64,7 @@ class SuperuserTestCase(TestCase):
     Site objects are created
     """
     def setUp(self):
+        setup_test_environment()
         User = get_user_model()
         self.user = User.objects.get(pk=settings.SITE_SUPERUSER_ID)
 

@@ -15,7 +15,8 @@ class SiteTestCase(TestCase):
     def setUp(self):
         setup_test_environment()
         self.resp = self.client.get('/admin')
-        print(self.resp)
+        self.assertEqual(self.resp.status_code, 200)
+
     def test_current_site_object(self):
         curr = Site.objects.get_current()
         self.assertEquals(curr.id, defaults.SITE_ID)
@@ -24,10 +25,6 @@ class SiteTestCase(TestCase):
         sites = Site.objects.count()
         self.assertEquals(sites, len(defaults.SITE_OBJECTS_INFO_DICT))
 
-    def test_admin_page(self):
-        self.assertEqual(self.resp.status_code, 200)
-
-
 class ContextTestCase(TestCase):
     """
     Context is filled in
@@ -35,6 +32,7 @@ class ContextTestCase(TestCase):
     def setUp(self):
         setup_test_environment()
         self.resp = self.client.get('/admin')
+        self.assertEqual(self.resp.status_code, 200)
 
     def test_context_site(self):
         curr_site = Site.objects.get_current()

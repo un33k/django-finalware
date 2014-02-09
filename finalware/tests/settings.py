@@ -1,4 +1,3 @@
-TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
 DATABASES = {
     'default': {
@@ -78,3 +77,5 @@ SITE_SUPERUSER_ID = '22'
 SITE_SUPERUSER_USERNAME = 'admin'
 SITE_SUPERUSER_EMAIL = 'admin@example.com'
 SITE_SUPERUSER_PASSWORD = 'coolpass'
+
+TEST_RUNNER = 'django.test.runner.DiscoverRunner'

@@ -11,7 +11,7 @@ install:
   - pip install -q -e . --use-mirrors
 before_script:
   - "pep8 --exclude=migrations --ignore=E501,E225 finalware"
-  - pyflakes -x W finalware
+  - if [[ $TRAVIS_PYTHON_VERSION == '2.7' ]]; then pyflakes -x W finalware; fi
 script: python manage.py test
 
 

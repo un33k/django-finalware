@@ -26,7 +26,7 @@ if defaults.SITE_ENABLE_SESSION_IN_ADMIN:
 
         def _session_data(self, obj):
             return pprint.pformat(obj.get_decoded()).replace('\n', '<br>\n')
-        _session_data.allow_tags=True
+        _session_data.allow_tags = True
         list_display = ['session_key', '_session_data', 'expire_date']
         readonly_fields = ['_session_data']
         exclude = ['session_data']

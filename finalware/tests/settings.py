@@ -58,11 +58,11 @@ SITE_OBJECTS_INFO_DICT = {
         'name': 'production',
         'domain': 'example.com',
     },
-    '2':{
+    '2': {
         'name': 'integration',
         'domain': 'example.org'
     },
-    '3':{
+    '3': {
         'name': 'development',
         'domain': '192.168.1.20:8080'
     },

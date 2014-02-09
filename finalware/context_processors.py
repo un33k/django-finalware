@@ -3,8 +3,10 @@ from django.conf import settings
 
 from . import defaults
 
+
 # Current Site Object (site: name, site: domain)
 SITE_OBJECT_CURRENT = Site.objects.get_current()
+
 
 def contextify(request):
     """

@@ -3,6 +3,7 @@ from django.contrib.sites.models import Site
 
 from . import defaults
 
+
 # Adding the Site models to the admin page
 class SiteAdmin(admin.ModelAdmin):
     list_display = ('id', 'domain', 'name',)
@@ -20,12 +21,15 @@ admin.site.register(Site, SiteAdmin)
 if defaults.SITE_ENABLE_SESSION_IN_ADMIN:
     import pprint
     from django.contrib.sessions.models import Session
+
     class SessionAdmin(admin.ModelAdmin):
+
         def _session_data(self, obj):
             return pprint.pformat(obj.get_decoded()).replace('\n', '<br>\n')
         _session_data.allow_tags=True
         list_display = ['session_key', '_session_data', 'expire_date']
         readonly_fields = ['_session_data']
         exclude = ['session_data']
-        date_hierarchy='expire_date'
+        date_hierarchy = 'expire_date'
+
     admin.site.register(Session, SessionAdmin)

@@ -24,12 +24,14 @@ def load_site_objects():
                 site.domain = site_info[pk]['domain']
                 site.save()
 
+
 def load_template_tags():
     """
     Loads template tags found in SITE_TEMPLATE_TAGS_AUTO_LOAD_LIST on startup
     """
     for t in defaults.SITE_TEMPLATE_TAGS_AUTO_LOAD_LIST:
         template.add_to_builtins(t)
+
 
 def create_superuser():
     """
@@ -53,6 +55,7 @@ def create_superuser():
             user.is_superuser = True
             user.save()
             log.info(_('Superuser created/updated'))
+
 
 def is_last_installed_app(app_config):
     """

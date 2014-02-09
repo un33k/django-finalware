@@ -12,6 +12,7 @@ from .utils import is_last_installed_app
 
 log = logging.getLogger(__name__)
 
+
 def disable_create_superuser_request(sender, **kwargs):
     """
     Disable migrate prompting for superuser creation.
@@ -21,10 +22,11 @@ def disable_create_superuser_request(sender, **kwargs):
         signals.post_migrate.disconnect(
             django_create_superuser,
             sender=apps.get_app_config('auth'),
-            dispatch_uid = "django.contrib.auth.management.create_superuser"
+            dispatch_uid="django.contrib.auth.management.create_superuser"
         )
 
 signals.pre_migrate.connect(disable_create_superuser_request)
+
 
 def finalize(sender, **kwargs):
     """

@@ -15,7 +15,7 @@ class SiteTestCase(TestCase):
     def setUp(self):
         setup_test_environment()
         self.resp = self.client.get('/admin')
-
+        print(self.resp)
     def test_current_site_object(self):
         curr = Site.objects.get_current()
         self.assertEquals(curr.id, defaults.SITE_ID)

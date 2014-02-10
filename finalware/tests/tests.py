@@ -12,9 +12,10 @@ class SiteTestCase(TestCase):
     """
     Site objects are created
     """
+
     def setUp(self):
         setup_test_environment()
-        self.resp = self.client.get('/admin')
+        self.resp = self.client.get('/make_request/')
         self.assertEqual(self.resp.status_code, 200)
 
     def test_current_site_object(self):
@@ -32,7 +33,7 @@ class ContextTestCase(TestCase):
     """
     def setUp(self):
         setup_test_environment()
-        self.resp = self.client.get('/admin')
+        self.resp = self.client.get('/make_request/')
         self.assertEqual(self.resp.status_code, 200)
 
     def test_context_site(self):

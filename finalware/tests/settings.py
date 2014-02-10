@@ -1,3 +1,5 @@
+import os
+
 
 DATABASES = {
     'default': {
@@ -6,6 +8,10 @@ DATABASES = {
     },
 }
 SECRET_KEY = "un33k"
+
+TEMPLATE_DIRS = ['%s' % os.path.abspath(os.path.join(os.path.dirname(__file__), 'templates')), ]
+
+print (TEMPLATE_DIRS)
 
 # Static file finders in order of precedence
 #######################################

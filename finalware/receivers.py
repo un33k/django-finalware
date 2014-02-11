@@ -34,7 +34,6 @@ def finalize(sender, **kwargs):
     and secure the site. At the end of the function, the site is up and
     ready to accept requests.
     """
-
     if is_last_installed_app(kwargs['app_config']):
         # setup sites
         load_site_objects()

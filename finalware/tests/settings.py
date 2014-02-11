@@ -4,7 +4,7 @@ import os
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': ':memory:',
+        'NAME': 'finalware_db',
     },
 }
 SECRET_KEY = "un33k"

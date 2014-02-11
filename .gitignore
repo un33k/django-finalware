@@ -9,4 +9,5 @@ build
 src
 .svn
 *_db
+*.db
 temp_data

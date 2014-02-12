@@ -2,10 +2,15 @@ from django.test import TestCase
 from django.conf import settings
 from django.contrib.sites.models import Site
 from django.contrib.auth import get_user_model
-from django.test.utils import setup_test_environment
 
 
 from finalware import defaults
+from finalware.utils import load_site_objects
+from finalware.utils import create_superuser
+from finalware.receivers import pre_migrate_receiver
+from finalware.receivers import post_migrate_receiver
+
+User = get_user_model()
 
 
 class SiteTestCase(TestCase):
@@ -14,17 +19,21 @@ class SiteTestCase(TestCase):
     """
 
     def setUp(self):
-        setup_test_environment()
         self.resp = self.client.get('/make_request/')
         self.assertEqual(self.resp.status_code, 200)
 
+    def test_default_site_object(self):
+        sites = Site.objects.count()
+        self.assertEqual(sites, 1)
+
     def test_current_site_object(self):
         curr = Site.objects.get_current()
-        self.assertEquals(curr.id, defaults.SITE_ID)
+        self.assertEqual(curr.id, defaults.SITE_ID)
 
     def test_total_site_objects(self):
+        load_site_objects()
         sites = Site.objects.count()
-        self.assertEquals(sites, len(defaults.SITE_OBJECTS_INFO_DICT))
+        self.assertEqual(sites, len(defaults.SITE_OBJECTS_INFO_DICT))
 
 
 class ContextTestCase(TestCase):
@@ -32,7 +41,6 @@ class ContextTestCase(TestCase):
     Context is filled in
     """
     def setUp(self):
-        setup_test_environment()
         self.resp = self.client.get('/make_request/')
         self.assertEqual(self.resp.status_code, 200)
 
@@ -64,18 +72,36 @@ class SuperuserTestCase(TestCase):
     Site objects are created
     """
     def setUp(self):
-        setup_test_environment()
-        User = get_user_model()
+        create_superuser()
         self.user = User.objects.get(pk=settings.SITE_SUPERUSER_ID)
+
+    def test_one_user(self):
+        users = User.objects.count()
+        self.assertEqual(users, 1)
 
     def test_superuser_username(self):
         username_field = self.user.USERNAME_FIELD
         if hasattr(self.user, username_field):
-            self.assertEquals(getattr(self.user, username_field), settings.SITE_SUPERUSER_USERNAME)
+            self.assertEqual(getattr(self.user, username_field), settings.SITE_SUPERUSER_USERNAME)
 
     def test_superuser_email(self):
         if hasattr(self.user, 'email'):
-            self.assertEquals(self.user.email, settings.SITE_SUPERUSER_EMAIL)
+            self.assertEqual(self.user.email, settings.SITE_SUPERUSER_EMAIL)
 
     def test_superuser_password(self):
-        self.assertEquals(self.user.check_password(settings.SITE_SUPERUSER_PASSWORD), True)
+        self.assertEqual(self.user.check_password(settings.SITE_SUPERUSER_PASSWORD), True)
+
+
+class MigrationSignalsTestCase(TestCase):
+    """
+    Test if migration signals fired.
+    """
+    def setUp(self):
+        self.pre = pre_migrate_receiver
+        self.post = post_migrate_receiver
+
+    def test_pre_migration_signal(self):
+        self.assertGreater(self.pre.call_counter, 0)
+
+    def test_post_migration_signal(self):
+        self.assertGreater(self.post.call_counter, 0)

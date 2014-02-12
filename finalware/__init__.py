@@ -3,5 +3,3 @@ __description__ = 'A utility application that finalizes the bootstrapping of a D
 __version__ = '0.0.3'
 
 default_app_config = 'finalware.apps.FinalwareConfig'
-
-from . import receivers

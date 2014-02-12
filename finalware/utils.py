@@ -1,6 +1,7 @@
 import logging
 from django import template
 from django.conf import settings
+from django.apps import apps
 from django.contrib.sites.models import Site
 from django.utils.translation import ugettext as _
 
@@ -15,6 +16,8 @@ def load_site_objects():
     Load the available Sites for this project.
     `SITE_ID` in the settings file will decide the `current` site object.
     """
+    if not apps.is_installed('django.contrib.sites'):
+        return
     site_info = getattr(defaults, 'SITE_OBJECTS_INFO_DICT')
     if site_info:
         for pk in sorted(site_info.keys()):
@@ -55,13 +58,3 @@ def create_superuser():
             user.is_superuser = True
             user.save()
             log.info(_('Superuser created/updated'))
-
-
-def is_last_installed_app(app_config):
-    """
-    Returns True if this app is the last installed application
-    Returns False if this app is not installed or not the last application
-    """
-    if app_config.label == settings.INSTALLED_APPS[-1].split('.')[-1]:
-        return True
-    return False

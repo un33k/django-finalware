@@ -7,43 +7,46 @@ from django.apps import apps
 from .utils import load_site_objects
 from .utils import load_template_tags
 from .utils import create_superuser
-from .utils import is_last_installed_app
 
 
 log = logging.getLogger(__name__)
 
+__all__ = ['pre_migrate_receiver', 'post_migrate_receiver', ]
 
-def disable_create_superuser_request(sender, **kwargs):
+
+class PreMigrateReceiver(object):
     """
-    Disable migrate prompting for superuser creation.
+    Disable the superuser creation prompt.
     """
-    if is_last_installed_app(kwargs['app_config']):
-        from django.contrib.auth.management import create_superuser as django_create_superuser
-        signals.post_migrate.disconnect(
-            django_create_superuser,
-            sender=apps.get_app_config('auth'),
-            dispatch_uid="django.contrib.auth.management.create_superuser"
-        )
+    def __init__(self):
+        self.call_counter = 0
 
-signals.pre_migrate.connect(disable_create_superuser_request)
+    def __call__(self, signal, sender, **kwargs):
+        self.call_counter += 1
+        if self.call_counter == 1:
+            from django.contrib.auth import management
+            signals.post_migrate.disconnect(
+                management.create_superuser,
+                sender=apps.get_app_config('auth'),
+                dispatch_uid="django.contrib.auth.management.create_superuser"
+            )
+
+pre_migrate_receiver = PreMigrateReceiver()
 
 
-def finalize(sender, **kwargs):
+class PostMigrateReceiver(object):
     """
-    After migrate, make final adjustments in order to prepare
-    and secure the site. At the end of the function, the site is up and
-    ready to accept requests.
+    Finalize the website loading.
     """
-    if is_last_installed_app(kwargs['app_config']):
-        # setup sites
-        load_site_objects()
+    def __init__(self):
+        self.call_counter = 0
 
-        # load commonly used template tags, once upon start
-        load_template_tags()
+    def __call__(self, signal, sender, **kwargs):
+            self.call_counter += 1
+            if self.call_counter == 1:
+                load_site_objects()
+                load_template_tags()
+                if getattr(settings, 'SITE_SUPERUSER_ID', False):
+                    create_superuser()
 
-        # the last thing is to create or update a superuser
-        if getattr(settings, 'SITE_SUPERUSER_ID', False):
-            create_superuser()
-
-# Latch to post migrate signal
-signals.post_migrate.connect(finalize)
+post_migrate_receiver = PostMigrateReceiver()

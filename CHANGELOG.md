@@ -1,3 +1,10 @@
+## 0.0.4
+
+Bug fix:
+
+  - Fix unit tests
+  - Test for pre and post migration signals
+
 ## 0.0.3
 
 Features:

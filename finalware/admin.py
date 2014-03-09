@@ -1,5 +1,4 @@
 from django.contrib import admin
-from django.contrib.admin.sites import NotRegistered
 from django.contrib.sites.models import Site
 
 from . import defaults
@@ -13,7 +12,7 @@ class SiteAdmin(admin.ModelAdmin):
 
 try:
     admin.site.unregister(Site)
-except NotRegistered:
+except admin.site.NotRegistered:
     pass
 admin.site.register(Site, SiteAdmin)
 

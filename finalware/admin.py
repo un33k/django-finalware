@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib.admin.sites import NotRegistered
 from django.contrib.sites.models import Site
 
 from . import defaults

@@ -67,6 +67,31 @@ class ContextTestCase(TestCase):
         self.assertEqual(self.resp.context['SITE_DESCRIPTION'], defaults.SITE_DESCRIPTION)
 
 
+class ExtraContextTestCase(TestCase):
+    """
+    Extra Context is filled in
+    """
+    def setUp(self):
+        self.resp = self.client.get('/make_request/')
+        self.assertEqual(self.resp.status_code, 200)
+
+    def test_context_site(self):
+        curr_site = Site.objects.get_current()
+        self.assertEqual(self.resp.context['SITE_OBJECT_CURRENT'], curr_site)
+
+    def test_context_valid_key_1(self):
+        self.assertEqual(self.resp.context['key_1'], 'value_1')
+
+    def test_context_valid_key_2(self):
+        self.assertEqual(self.resp.context['key_2'], 'value_2')
+
+    def test_context_valid_key_3(self):
+        self.assertEqual(self.resp.context['key_3'], 'value_3')
+
+    def test_context_invalid_key_4(self):
+        self.assertEqual('key_4' in self.resp.context, False)
+
+
 class SuperuserTestCase(TestCase):
     """
     Site objects are created

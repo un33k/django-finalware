@@ -45,7 +45,6 @@ class PostMigrateReceiver(object):
             self.call_counter += 1
             if self.call_counter == 1:
                 load_site_objects()
-                load_template_tags()
                 if getattr(settings, 'SITE_SUPERUSER_ID', False):
                     create_superuser()
 

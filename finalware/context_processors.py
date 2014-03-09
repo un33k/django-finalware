@@ -24,4 +24,7 @@ def contextify(request):
         'SITE_GOOGLE_ANALYTICS': defaults.SITE_GOOGLE_ANALYTICS,
         'SITE_OBJECT_CURRENT': SITE_OBJECT_CURRENT,
     }
+
+    ctx.update(defaults.SITE_EXTRA_CONTEXT_DICT)
+
     return ctx

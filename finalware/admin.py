@@ -12,7 +12,7 @@ class SiteAdmin(admin.ModelAdmin):
 
 try:
     admin.site.unregister(Site)
-except:
+except NotRegistered:
     pass
 admin.site.register(Site, SiteAdmin)
 

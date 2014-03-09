@@ -1,3 +1,13 @@
+## 0.0.5
+
+Features:
+
+  - Added the ability to inject extra data into response context via settings.SITE_EXTRA_CONTEXT_DICT
+
+Bug fix:
+
+  - Loading template tags is moved to the ready() function
+
 ## 0.0.4
 
 Bug fix:

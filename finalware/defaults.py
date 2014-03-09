@@ -33,3 +33,6 @@ SITE_TEMPLATE_TAGS_AUTO_LOAD_LIST = getattr(settings, 'SITE_TEMPLATE_TAGS_AUTO_L
 
 # To see session objects in admin
 SITE_ENABLE_SESSION_IN_ADMIN = getattr(settings, 'SITE_ENABLE_SESSION_IN_ADMIN', False)
+
+# Extra context
+SITE_EXTRA_CONTEXT_DICT = getattr(settings, 'SITE_EXTRA_CONTEXT_DICT', {})

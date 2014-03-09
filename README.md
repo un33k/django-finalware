@@ -158,6 +158,18 @@ How to use
 
    ```
 
+   ```python
+
+   # To add any extra data to your response context, set SITE_EXTRA_CONTEXT_DICT in your settings file.
+
+   SITE_EXTRA_CONTEXT_DICT = {
+       "param_1": "value1",
+       "param_2": "value2",
+       "param_3": "value3",
+       # ...
+   }
+   ```
+
 Running the tests
 ====================
 

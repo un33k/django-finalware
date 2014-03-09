@@ -84,4 +84,10 @@ SITE_SUPERUSER_USERNAME = 'admin'
 SITE_SUPERUSER_EMAIL = 'admin@example.com'
 SITE_SUPERUSER_PASSWORD = 'coolpass'
 
+SITE_EXTRA_CONTEXT_DICT = {
+    "key_1": "value_1",
+    "key_2": "value_2",
+    "key_3": "value_3",
+}
+
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'

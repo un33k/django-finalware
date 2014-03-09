@@ -33,6 +33,7 @@ How to install
 
 | Finalware | Django  | PY 2.7  | PY 3.2  | PY 3.3  | Installation |
 |:---------:|:-------:|:-------:|:-------:|:-------:|:------------:|
+| 0.0.5 | **1.7.x** | YES | YES | YES | pip install django-finalware==0.0.5 |
 | 0.0.4 | **1.7.x** | YES | YES | YES | pip install django-finalware==0.0.4 |
 | 0.0.2 | 1.6.x | YES | YES | YES | pip install django-finalware==0.0.2 |
 
@@ -163,9 +164,9 @@ How to use
    # To add any extra data to your response context, set SITE_EXTRA_CONTEXT_DICT in your settings file.
 
    SITE_EXTRA_CONTEXT_DICT = {
-       "param_1": "value1",
-       "param_2": "value2",
-       "param_3": "value3",
+       "key_1": "value_1",
+       "key_2": "value_2",
+       "key_3": "value_3",
        # ...
    }
    ```

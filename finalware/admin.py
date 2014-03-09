@@ -32,4 +32,9 @@ if defaults.SITE_ENABLE_SESSION_IN_ADMIN:
         exclude = ['session_data']
         date_hierarchy = 'expire_date'
 
+    try:
+        admin.site.unregister(Session)
+    except admin.site.NotRegistered:
+        pass
+
     admin.site.register(Session, SessionAdmin)

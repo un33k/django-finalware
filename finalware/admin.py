@@ -12,7 +12,7 @@ class SiteAdmin(admin.ModelAdmin):
 
 try:
     admin.site.unregister(Site)
-except admin.site.NotRegistered:
+except admin.sites.NotRegistered:
     pass
 admin.site.register(Site, SiteAdmin)
 
@@ -34,7 +34,7 @@ if defaults.SITE_ENABLE_SESSION_IN_ADMIN:
 
     try:
         admin.site.unregister(Session)
-    except admin.site.NotRegistered:
+    except admin.sites.NotRegistered:
         pass
 
     admin.site.register(Session, SessionAdmin)

@@ -14,7 +14,7 @@ TEMPLATE_DIRS = [
 ]
 
 # Static file finders in order of precedence
-#######################################
+# #####################################
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
@@ -22,7 +22,7 @@ STATICFILES_FINDERS = [
 ]
 
 # Template file loads in order of precedence
-#######################################
+# #####################################
 TEMPLATE_LOADERS = [
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
@@ -30,7 +30,7 @@ TEMPLATE_LOADERS = [
 ]
 
 # Context processor
-#######################################
+# #####################################
 TEMPLATE_CONTEXT_PROCESSORS = [
     'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.debug',
@@ -40,8 +40,16 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     'finalware.context_processors.contextify',
 ]
 
+# Middleware classes
+# #####################################
+MIDDLEWARE_CLASSES = [
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+]
+
 # Installed Apps
-#######################################
+# #####################################
 INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -56,7 +64,7 @@ INSTALLED_APPS = [
 ]
 
 # Site objects auto config
-#######################################
+# #####################################
 # site info (you need at least one site)
 SITE_OBJECTS_INFO_DICT = {
     '1': {

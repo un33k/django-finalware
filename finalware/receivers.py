@@ -23,8 +23,8 @@ class PreMigrateReceiver(object):
 
     def __call__(self, signal, sender, **kwargs):
         self.call_counter += 1
-        if self.call_counter == 1:
-            from django.contrib.auth import management
+        from django.contrib.auth import management
+        if self.call_counter == 1 and hasattr(management, 'create_superuser'):
             signals.post_migrate.disconnect(
                 management.create_superuser,
                 sender=apps.get_app_config('auth'),

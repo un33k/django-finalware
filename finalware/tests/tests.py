@@ -24,7 +24,7 @@ class SiteTestCase(TestCase):
 
     def test_default_site_object(self):
         sites = Site.objects.count()
-        self.assertEqual(sites, 1)
+        self.assertEqual(sites, 3)
 
     def test_current_site_object(self):
         curr = Site.objects.get_current()

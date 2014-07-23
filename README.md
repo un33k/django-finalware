@@ -33,6 +33,7 @@ How to install
 
 | Finalware | Django  | PY 2.7  | PY 3.2  | PY 3.3  | Installation |
 |:---------:|:-------:|:-------:|:-------:|:-------:|:------------:|
+| 0.0.6 | **1.7.x** | YES | YES | YES | pip install django-finalware==0.0.6 |
 | 0.0.5 | **1.7.x** | YES | YES | YES | pip install django-finalware==0.0.5 |
 | 0.0.4 | **1.7.x** | YES | YES | YES | pip install django-finalware==0.0.4 |
 | 0.0.2 | 1.6.x | YES | YES | YES | pip install django-finalware==0.0.2 |

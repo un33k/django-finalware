@@ -31,11 +31,10 @@ How to install
         b. cd into django-finalware-* directory
         c. run python setup.py
 
-| Finalware | Django  | PY 2.7  | PY 3.2  | PY 3.3  | Installation |
-|:---------:|:-------:|:-------:|:-------:|:-------:|:------------:|
-| 0.0.7 | **1.7.x** | YES | YES | YES | pip install django-finalware==0.0.7 |
-| 0.0.2 | 1.6.x | YES | YES | YES | pip install django-finalware==0.0.2 |
-
+Compatibility
+====================
+    1. Please use version 0.0.2 for Django<=1.6.x
+    2. Otherwise refer to the ([build matrix](.travis.yaml)).
 
 How to use
 ====================

@@ -2,6 +2,12 @@
 
 Features:
 
+  - Added support for pyp3
+
+## 0.0.6
+
+Features:
+
   - Added support for 3.4 and pypy
 
 ## 0.0.5

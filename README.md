@@ -34,7 +34,7 @@ How to install
 Compatibility
 ====================
     1. Please use version 0.0.2 for Django<=1.6.x
-    2. Otherwise refer to the ([build matrix](.travis.yaml)).
+    2. Otherwise refer to the ([build matrix](.travis.yml)).
 
 How to use
 ====================

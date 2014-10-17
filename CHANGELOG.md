@@ -1,3 +1,10 @@
+## 0.0.7
+
+Enhancements:
+
+  - Travis configuration rework.
+  - Dropped compatibility table from readme.
+
 ## 0.0.6
 
 Features:

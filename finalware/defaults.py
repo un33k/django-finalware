@@ -1,5 +1,10 @@
 from django.conf import settings
 
+# Super user account info
+SITE_SUPERUSER_ID = getattr(settings, 'SITE_SUPERUSER_ID', '')
+SITE_SUPERUSER_USERNAME = getattr(settings, 'SITE_SUPERUSER_USERNAME', '')
+SITE_SUPERUSER_EMAIL = getattr(settings, 'SITE_SUPERUSER_EMAIL', '')
+SITE_SUPERUSER_PASSWORD = getattr(settings, 'SITE_SUPERUSER_PASSWORD', '')
 
 # ID of the current site object
 SITE_ID = getattr(settings, 'SITE_ID', None)

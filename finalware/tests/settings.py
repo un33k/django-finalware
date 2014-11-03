@@ -99,3 +99,13 @@ SITE_EXTRA_CONTEXT_DICT = {
 }
 
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
+
+SITE_TEMPLATE_TAGS_AUTO_LOAD_LIST = [
+    # django tags
+    'django.templatetags.cache',
+    'django.templatetags.future',
+    'django.templatetags.i18n',
+    'django.templatetags.l10n',
+    'django.templatetags.static',
+    'django.contrib.humanize.templatetags.humanize',
+]

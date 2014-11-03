@@ -3,49 +3,36 @@ import logging
 from django.conf import settings
 from django.db.models import signals
 from django.apps import apps
+from django.db import DEFAULT_DB_ALIAS
 
 from .utils import load_site_objects
 from .utils import load_template_tags
 from .utils import create_superuser
 
+from . import defaults as defs
 
 log = logging.getLogger(__name__)
 
-__all__ = ['pre_migrate_receiver', 'post_migrate_receiver', ]
 
-
-class PreMigrateReceiver(object):
+def pre_migrate_receiver(app_config, verbosity=2, interactive=False, using=DEFAULT_DB_ALIAS, **kwargs):
     """
     Disable the superuser creation prompt.
     """
-    def __init__(self):
-        self.call_counter = 0
-
-    def __call__(self, signal, sender, **kwargs):
-        self.call_counter += 1
-        from django.contrib.auth import management
-        if self.call_counter == 1 and hasattr(management, 'create_superuser'):
-            signals.post_migrate.disconnect(
-                management.create_superuser,
-                sender=apps.get_app_config('auth'),
-                dispatch_uid="django.contrib.auth.management.create_superuser"
-            )
-
-pre_migrate_receiver = PreMigrateReceiver()
+    from django.contrib.auth import management
+    if hasattr(management, 'create_superuser'):
+        signals.post_migrate.disconnect(
+            management.create_superuser,
+            sender=apps.get_app_config('auth'),
+            dispatch_uid="django.contrib.auth.management.create_superuser"
+        )
+        if verbosity >= 2:
+            print("Disabling create_superuser prompt")
 
 
-class PostMigrateReceiver(object):
+def post_migrate_receiver(app_config, verbosity=2, interactive=False, using=DEFAULT_DB_ALIAS, **kwargs):
     """
     Finalize the website loading.
     """
-    def __init__(self):
-        self.call_counter = 0
-
-    def __call__(self, signal, sender, **kwargs):
-            self.call_counter += 1
-            if self.call_counter == 1:
-                load_site_objects()
-                if getattr(settings, 'SITE_SUPERUSER_ID', False):
-                    create_superuser()
-
-post_migrate_receiver = PostMigrateReceiver()
+    load_site_objects(verbosity)
+    if getattr(defs, 'SITE_SUPERUSER_ID', False):
+        create_superuser(verbosity)

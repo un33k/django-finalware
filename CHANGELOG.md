@@ -1,3 +1,9 @@
+## 0.0.8
+
+Enhancements:
+
+  - Better handle multiple post-migrate signals.
+
 ## 0.0.7
 
 Enhancements:

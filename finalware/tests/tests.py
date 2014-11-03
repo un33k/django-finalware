@@ -31,7 +31,7 @@ class SiteTestCase(TestCase):
         self.assertEqual(curr.id, defaults.SITE_ID)
 
     def test_total_site_objects(self):
-        load_site_objects()
+        load_site_objects(verbosity=1)
         sites = Site.objects.count()
         self.assertEqual(sites, len(defaults.SITE_OBJECTS_INFO_DICT))
 
@@ -97,7 +97,7 @@ class SuperuserTestCase(TestCase):
     Site objects are created
     """
     def setUp(self):
-        create_superuser()
+        create_superuser(verbosity=1)
         self.user = User.objects.get(pk=settings.SITE_SUPERUSER_ID)
 
     def test_one_user(self):
@@ -115,18 +115,3 @@ class SuperuserTestCase(TestCase):
 
     def test_superuser_password(self):
         self.assertEqual(self.user.check_password(settings.SITE_SUPERUSER_PASSWORD), True)
-
-
-class MigrationSignalsTestCase(TestCase):
-    """
-    Test if migration signals fired.
-    """
-    def setUp(self):
-        self.pre = pre_migrate_receiver
-        self.post = post_migrate_receiver
-
-    def test_pre_migration_signal(self):
-        self.assertGreater(self.pre.call_counter, 0)
-
-    def test_post_migration_signal(self):
-        self.assertGreater(self.post.call_counter, 0)

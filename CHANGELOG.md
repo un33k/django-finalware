@@ -1,3 +1,11 @@
+## 0.1.0
+
+Enhancements:
+
+  - Add 1.8 and drop <=1.6.x
+  - Beta version
+  - Dropped SITE_SUPERUSER_ID as django 1.8 allows for UUID as primary key
+
 ## 0.0.8
 
 Enhancements:

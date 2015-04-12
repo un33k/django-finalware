@@ -1,14 +1,15 @@
 language: python
 
 python:
-  - "2.7"
-  - "3.2"
-  - "3.3"
   - "3.4"
-  - "pypy"
+  - "3.3"
+  - "3.2"
+  - "2.7"
+  - pypy
 
 env:
-  - DJANGO="django==1.7"
+  - DJANGO="django==1.8"
+  - DJANGO="django==1.7.7"
 
 install:
   - pip install $DJANGO
@@ -19,6 +20,6 @@ install:
 
 before_script:
   - "pep8 --exclude=migrations --ignore=E501,E225,E128 ."
-  - if [[ $TRAVIS_PYTHON_VERSION == '2.7' ]]; then pyflakes -x W ipware; fi
+  - if [[ $TRAVIS_PYTHON_VERSION == '2.7' ]]; then pyflakes -x W finalware; fi
 
 script: python manage.py test

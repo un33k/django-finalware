@@ -32,39 +32,50 @@ def load_site_objects(verbosity):
                         print('Updated {} Site'.format(site.domain))
 
 
-def load_template_tags():
+def load_template_tags(verbosity):
     """
     Loads template tags found in SITE_TEMPLATE_TAGS_AUTO_LOAD_LIST on startup
     """
     for t in defs.SITE_TEMPLATE_TAGS_AUTO_LOAD_LIST:
         add_to_builtins(t)
+    if verbosity >= 2:
+        print('Loaded default template tags')
 
 
 def create_superuser(verbosity):
     """
     Create or update a superuser.
     """
-    user_id = getattr(defs, 'SITE_SUPERUSER_ID')
     username = getattr(defs, 'SITE_SUPERUSER_USERNAME')
     email = getattr(defs, 'SITE_SUPERUSER_EMAIL')
     password = getattr(defs, 'SITE_SUPERUSER_PASSWORD')
-    if user_id and username and email and password:
-        from django.contrib.auth import get_user_model
-        User = get_user_model()
-        user, created = User.objects.get_or_create(pk=user_id)
-        if user:
-            if hasattr(user, 'username'):
-                user.username = username
-            if hasattr(user, 'email'):
-                user.email = email
-            user.set_password(password)
-            user.is_staff = True
-            user.is_active = True
-            user.is_superuser = True
-            user.save()
-            log.info('Superuser created or updated')
-            if verbosity >= 2:
-                if created:
-                    print('Creating superuser')
-                else:
-                    print('Updated superuser')
+    if not password:
+        print('Skipped superuser create/update. No password supplied.')
+        return
+
+    from django.contrib.auth import get_user_model
+    User = get_user_model()
+    if User.USERNAME_FIELD == 'email' and email:
+        user, created = User.objects.get_or_create(email=email)
+    elif User.USERNAME_FIELD == 'username' and username:
+        user, created = User.objects.get_or_create(username=username)
+    else:
+        print('Skipped superuser create/update. No username or email supplied.')
+        return
+
+    if user:
+        if email and hasattr(user, 'email'):
+            user.email = email
+        if username and hasattr(user, 'username'):
+            user.username = username
+        user.set_password(password)
+        user.is_staff = True
+        user.is_active = True
+        user.is_superuser = True
+        user.save()
+        log.info('Superuser created or updated')
+        if verbosity >= 2:
+            if created:
+                print('Creating superuser')
+            else:
+                print('Updated superuser')

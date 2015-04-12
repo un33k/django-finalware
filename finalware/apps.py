@@ -21,5 +21,3 @@ class AppConfig(DjangoAppConfig):
 
         signals.post_migrate.connect(receivers.post_migrate_receiver,
             sender=apps.get_app_config(self.name))
-
-        receivers.load_template_tags()

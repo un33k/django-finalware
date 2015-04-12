@@ -34,7 +34,8 @@ How to install
 Compatibility
 ====================
     1. Please use version 0.0.2 for Django<=1.6.x
-    2. Otherwise refer to the build matrix. (.travis.yml)).
+    2. Please use version 0.0.8 for Django<=1.7.x
+    3. Otherwise refer to the build matrix. (.travis.yml)).
 
 How to use
 ====================
@@ -98,9 +99,6 @@ How to use
 
     # To create/update a superuser account automatically, add the following to your settings file.
     # This will disable the `superuser` creation option of syncdb.
-
-    # This field is the superuser object ID. Pick something other than `1` for security reason.
-    SITE_SUPERUSER_ID = ''
 
     # This field is stored in `User.USERNAME_FIELD`. This is usually a `username` or  an `email`.
     SITE_SUPERUSER_USERNAME = ''

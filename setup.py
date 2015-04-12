@@ -16,7 +16,7 @@ author_email = 'info@neekware.com'
 license = 'BSD'
 install_requires = ['']
 classifiers = [
-    'Development Status :: 3 - Alpha',
+    'Development Status :: 4 - Beta',
     'Environment :: Web Environment',
     'Intended Audience :: Developers',
     'License :: OSI Approved :: BSD License',

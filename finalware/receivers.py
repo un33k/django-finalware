@@ -34,5 +34,5 @@ def post_migrate_receiver(app_config, verbosity=2, interactive=False, using=DEFA
     Finalize the website loading.
     """
     load_site_objects(verbosity)
-    if getattr(defs, 'SITE_SUPERUSER_ID', False):
-        create_superuser(verbosity)
+    create_superuser(verbosity)
+    load_template_tags(verbosity)

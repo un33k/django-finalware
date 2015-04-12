@@ -98,7 +98,7 @@ class SuperuserTestCase(TestCase):
     """
     def setUp(self):
         create_superuser(verbosity=1)
-        self.user = User.objects.get(pk=settings.SITE_SUPERUSER_EMAIL)
+        self.user = User.objects.get(email=settings.SITE_SUPERUSER_EMAIL)
 
     def test_one_user(self):
         users = User.objects.count()

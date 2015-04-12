@@ -63,19 +63,22 @@ def create_superuser(verbosity):
         print('Skipped superuser create/update. No username or email supplied.')
         return
 
-    if user:
-        if email and hasattr(user, 'email'):
-            user.email = email
-        if username and hasattr(user, 'username'):
-            user.username = username
-        user.set_password(password)
-        user.is_staff = True
-        user.is_active = True
-        user.is_superuser = True
-        user.save()
-        log.info('Superuser created or updated')
-        if verbosity >= 2:
-            if created:
-                print('Creating superuser')
-            else:
-                print('Updated superuser')
+    if not created and not user.is_superuser:
+        print('Unable to promote normal user to superuser. Use createsuperuser command.')
+        return
+
+    if email and hasattr(user, 'email'):
+        user.email = email
+    if username and hasattr(user, 'username'):
+        user.username = username
+    user.set_password(password)
+    user.is_staff = True
+    user.is_active = True
+    user.is_superuser = True
+    user.save()
+    log.info('Superuser created or updated')
+    if verbosity >= 2:
+        if created:
+            print('Creating superuser')
+        else:
+            print('Updated superuser')

@@ -1,3 +1,9 @@
+## 0.1.1
+
+Enhancements:
+
+  - Make template tags loading optional in preparation for Django 1.9
+
 ## 0.1.0
 
 Enhancements:

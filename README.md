@@ -3,9 +3,13 @@ Django Finalware
 
 **A utility application that automates the bootstrapping of a Django-powered site**
 
-[![build-status-image-travis]][travis]
-[![build-status-image-fury]][fury]
-[![build-status-image-pypi]][pypi]
+[![status-image]][status-link]
+[![version-image]][version-link]
+[![coverage-image]][coverage-link]
+[![download-image]][download-link]
+
+
+Overview
 
 
 Overview
@@ -181,11 +185,22 @@ License
 Released under a ([BSD](LICENSE.md)) license.
 
 
-[build-status-image-travis]: https://secure.travis-ci.org/un33k/django-finalware.png?branch=master
-[travis]: http://travis-ci.org/un33k/django-finalware?branch=master
+Version
+====================
+X.Y.Z Version
 
-[build-status-image-fury]: https://badge.fury.io/py/django-finalware.png
-[fury]: http://badge.fury.io/py/django-finalware
+    `MAJOR` version -- when you make incompatible API changes,
+    `MINOR` version -- when you add functionality in a backwards-compatible manner, and
+    `PATCH` version -- when you make backwards-compatible bug fixes.
 
-[build-status-image-pypi]: https://pypip.in/d/django-finalware/badge.png
-[pypi]: https://crate.io/packages/django-finalware?version=latest
+[status-image]: https://secure.travis-ci.org/un33k/django-finalware.png?branch=master
+[status-link]: http://travis-ci.org/un33k/django-finalware?branch=master
+
+[version-image]: https://img.shields.io/pypi/v/django-finalware.svg
+[version-link]: https://pypi.python.org/pypi/django-finalware
+
+[coverage-image]: https://coveralls.io/repos/un33k/django-finalware/badge.svg
+[coverage-link]: https://coveralls.io/r/un33k/django-finalware
+
+[download-image]: https://img.shields.io/pypi/dm/django-finalware.svg
+[download-link]: https://pypi.python.org/pypi/django-finalware

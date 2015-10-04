@@ -6,7 +6,6 @@ from django.apps import apps
 from django.db import DEFAULT_DB_ALIAS
 
 from .utils import load_site_objects
-from .utils import load_template_tags
 from .utils import create_superuser
 
 from . import defaults as defs
@@ -35,4 +34,3 @@ def post_migrate_receiver(app_config, verbosity=2, interactive=False, using=DEFA
     """
     load_site_objects(verbosity)
     create_superuser(verbosity)
-    load_template_tags(verbosity)

@@ -2,11 +2,23 @@ import logging
 from django.conf import settings
 from django.apps import apps
 from django.contrib.sites.models import Site
-from django.template.base import add_to_builtins
 
 from . import defaults as defs
 
 log = logging.getLogger(__name__)
+
+
+def load_template_tags():
+    """
+    Loads template tags found in SITE_TEMPLATE_TAGS_AUTO_LOAD_LIST on startup
+    """
+    try:
+        from django.template.base import add_to_builtins
+        for t in defs.SITE_TEMPLATE_TAGS_AUTO_LOAD_LIST:
+            add_to_builtins(t)
+        log.info('Loaded default template tags')
+    except ImportError:
+        log.info('Use builtins option of the TEMPLATES list in your settings.')
 
 
 # Setup the available sites for this project
@@ -30,16 +42,6 @@ def load_site_objects(verbosity):
                         print('Creating {} Site'.format(site.domain))
                     else:
                         print('Updated {} Site'.format(site.domain))
-
-
-def load_template_tags(verbosity):
-    """
-    Loads template tags found in SITE_TEMPLATE_TAGS_AUTO_LOAD_LIST on startup
-    """
-    for t in defs.SITE_TEMPLATE_TAGS_AUTO_LOAD_LIST:
-        add_to_builtins(t)
-    if verbosity >= 2:
-        print('Loaded default template tags')
 
 
 def create_superuser(verbosity):

@@ -35,12 +35,6 @@ How to install
         b. cd into django-finalware-* directory
         c. run python setup.py
 
-Compatibility
-====================
-    1. Please use version 0.0.2 for Django<=1.6.x
-    2. Please use version 0.0.8 for Django<=1.7.x
-    3. Otherwise refer to the build matrix. (.travis.yml)).
-
 How to use
 ====================
 

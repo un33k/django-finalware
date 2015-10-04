@@ -1,9 +1,11 @@
+sudo: false
 language: python
 
 python:
   - "3.5"
   - "3.4"
   - "2.7"
+  - "2.6"
   - pypy
 
 env:
@@ -11,14 +13,28 @@ env:
   - DJANGO="django==1.7.10"
 
 install:
+  - pip install --upgrade pip
   - pip install $DJANGO
   - pip install -r requirements.txt
   - pip install -e .
   - pip install pep8
   - pip install https://github.com/un33k/pyflakes/tarball/master
+  - pip install coveralls
 
 before_script:
-  - "pep8 --exclude=migrations --ignore=E501,E225,E128 ."
+  - "pep8 --exclude=migrations --ignore=E125,E128,E225,E501,E731 ."
   - if [[ $TRAVIS_PYTHON_VERSION == '2.7' ]]; then pyflakes -x W finalware; fi
 
-script: python manage.py test
+matrix:
+  exclude:
+   - python: "2.6"
+     env: DJANGO="django==1.8.4"
+   - python: "3.5"
+     env: DJANGO="django==1.7.10"
+   - python: "2.6"
+     env: DJANGO="django==1.7.10"
+
+script: coverage run --source=finalware manage.py test
+
+after_success:
+  coveralls

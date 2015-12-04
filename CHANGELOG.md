@@ -1,3 +1,9 @@
+## 0.1.2
+
+Enhancements:
+
+  - Make app registry load modules on ready() in preparation for Django 1.9
+
 ## 0.1.1
 
 Enhancements:

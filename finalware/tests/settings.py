@@ -27,7 +27,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'APP_DIRS': True,
-        'DIRS': [ './finalware/tests/templates'],
+        'DIRS': ['./finalware/tests/templates'],
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.csrf',

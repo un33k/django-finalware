@@ -4,16 +4,15 @@ language: python
 python:
   - "3.5"
   - "3.4"
+  - "3.3"
   - "2.7"
-  - "2.6"
   - pypy
 
 env:
-  - DJANGO="django==1.8.5"
-  - DJANGO="django==1.7.10"
+  - DJANGO="django==1.9"
+  - DJANGO="django==1.8.7"
 
 install:
-  - pip install --upgrade pip
   - pip install $DJANGO
   - pip install -r requirements.txt
   - pip install -e .
@@ -22,17 +21,13 @@ install:
   - pip install coveralls
 
 before_script:
-  - "pep8 --exclude=migrations --ignore=E125,E128,E225,E501,E731 ."
+  - "pep8 --exclude=migrations --ignore=E501,E225,E128 ."
   - if [[ $TRAVIS_PYTHON_VERSION == '2.7' ]]; then pyflakes -x W finalware; fi
 
 matrix:
   exclude:
-   - python: "2.6"
-     env: DJANGO="django==1.8.5"
-   - python: "3.5"
-     env: DJANGO="django==1.7.10"
-   - python: "2.6"
-     env: DJANGO="django==1.7.10"
+   - python: "3.3"
+     env: DJANGO="django==1.9"
 
 script: coverage run --source=finalware manage.py test
 

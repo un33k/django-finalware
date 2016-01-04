@@ -1,3 +1,9 @@
+## 0.1.3
+
+Enhancements:
+
+  - Change SITE_DOMAIN_NAME to SITE_DOMAIN
+
 ## 0.1.2
 
 Enhancements:

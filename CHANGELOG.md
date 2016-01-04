@@ -3,6 +3,7 @@
 Enhancements:
 
   - Change SITE_DOMAIN_NAME to SITE_DOMAIN
+  - Prepare for Django 1.10
 
 ## 0.1.2
 

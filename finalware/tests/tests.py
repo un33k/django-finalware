@@ -49,7 +49,7 @@ class ContextTestCase(TestCase):
         self.assertEqual(self.resp.context['SITE_OBJECT_CURRENT'], curr_site)
 
     def test_context_protocol(self):
-        self.assertEqual(self.resp.context['SITE_PROTOCOL'], 'http')
+        self.assertEqual(self.resp.context['SITE_PROTOCOL'], 'https')
 
     def test_context_organization(self):
         self.assertEqual(self.resp.context['SITE_ORGANIZATION'], defaults.SITE_ORGANIZATION)

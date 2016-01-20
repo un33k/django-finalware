@@ -22,7 +22,7 @@ SITE_CDN_UPLOAD_URL = getattr(settings, 'SITE_CDN_UPLOAD_URL', '')
 
 # Site Specific Info
 SITE_ORGANIZATION = getattr(settings, 'SITE_ORGANIZATION', 'Example Org')
-SITE_NAME = getattr(settings, 'SITE_PROJ_NAME', 'Example Site')
+SITE_NAME = getattr(settings, 'SITE_NAME', 'Example Site')
 SITE_DOMAIN = getattr(settings, 'SITE_DOMAIN', 'example.com')
 SITE_PROTOCOL = getattr(settings, 'SITE_PROTOCOL', 'https')
 SITE_TITLE = getattr(settings, 'SITE_TITLE', SITE_DOMAIN.upper())

@@ -1,3 +1,9 @@
+## 0.1.4
+
+Bugfix:
+
+  - Change SITE_DOMAIN_NAME to SITE_DOMAIN (second attempt)
+
 ## 0.1.3
 
 Enhancements:

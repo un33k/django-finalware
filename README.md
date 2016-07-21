@@ -110,24 +110,6 @@ How to use
 
    ```python
 
-    # To automatically load the most-used template tags, add them to `AUTO_LOAD_TEMPLATE_TAGS_LIST` in your settings.
-
-    AUTO_LOAD_TEMPLATE_TAGS_LIST = [
-        # django specific tags
-        'django.templatetags.cache',
-        'django.templatetags.future',
-        'django.templatetags.i18n',
-        'django.templatetags.l10n',
-        'django.templatetags.static',
-        'django.contrib.humanize.templatetags.humanize',
-
-        # 3rd party tags
-    ]
-
-   ```
-
-   ```python
-
     # To automatically add any of the following to your response context, set them in your settings file.
 
     # Site's CDN Static URL (e.g. Amazon S3 bucket configured for downloading)

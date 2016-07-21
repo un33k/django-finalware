@@ -8,19 +8,6 @@ from . import defaults as defs
 log = logging.getLogger(__name__)
 
 
-def load_template_tags():
-    """
-    Loads template tags found in SITE_TEMPLATE_TAGS_AUTO_LOAD_LIST on startup
-    """
-    try:
-        from django.template.base import add_to_builtins
-        for t in defs.SITE_TEMPLATE_TAGS_AUTO_LOAD_LIST:
-            add_to_builtins(t)
-        log.info('Loaded default template tags')
-    except ImportError:
-        log.info('Use builtins option of the TEMPLATES list in your settings.')
-
-
 # Setup the available sites for this project
 def load_site_objects(verbosity):
     """

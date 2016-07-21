@@ -6,8 +6,6 @@ Django Finalware
 [![status-image]][status-link]
 [![version-image]][version-link]
 [![coverage-image]][coverage-link]
-[![download-image]][download-link]
-
 
 Overview
 
@@ -107,24 +105,6 @@ How to use
 
     # A hashed version of `SITE_SUPERUSER_PASSWORD` will be store in superuser's `password` field.
     SITE_SUPERUSER_PASSWORD = ''
-
-   ```
-
-   ```python
-
-    # To automatically load the most-used template tags, add them to `AUTO_LOAD_TEMPLATE_TAGS_LIST` in your settings.
-
-    AUTO_LOAD_TEMPLATE_TAGS_LIST = [
-        # django specific tags
-        'django.templatetags.cache',
-        'django.templatetags.future',
-        'django.templatetags.i18n',
-        'django.templatetags.l10n',
-        'django.templatetags.static',
-        'django.contrib.humanize.templatetags.humanize',
-
-        # 3rd party tags
-    ]
 
    ```
 

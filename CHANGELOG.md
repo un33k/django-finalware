@@ -1,5 +1,13 @@
 ## 0.1.4
 
+Enhancements:
+
+  - Remove Template Tag loading option as you can set that in settings.py now
+  - Drop support for python 3.3
+  - Update supported Django to 1.9.8 and 1.8.14
+
+## 0.1.4
+
 Bugfix:
 
   - Change SITE_DOMAIN_NAME to SITE_DOMAIN (second attempt)

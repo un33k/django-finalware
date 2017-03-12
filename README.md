@@ -57,20 +57,6 @@ How to use
 
    ```python
 
-    # Add `finalware.context_processors.contextify` to your TEMPLATE_CONTEXT_PROCESSORS
-
-    TEMPLATE_CONTEXT_PROCESSORS = [
-        'django.contrib.auth.context_processors.auth',
-        'django.template.context_processors.debug',
-        'django.template.context_processors.request',
-
-        'finalware.context_processors.contextify',
-    ]
-
-   ```
-
-   ```python
-
     # Add `SITE_OBJECTS_INFO_DICT` to your settings file. For example:
 
     SITE_OBJECTS_INFO_DICT = {
